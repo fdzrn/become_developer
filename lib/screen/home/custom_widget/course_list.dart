@@ -4,12 +4,12 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class CourseList extends StatelessWidget {
-  courseMethod(BuildContext context, int index) {
+  Widget courseMethod(BuildContext context, int index) {
     Size size = MediaQuery.of(context).size;
     Course course = courses[index];
 
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+      padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
       child: Container(
         height: size.height * 0.2,
         decoration: BoxDecoration(
@@ -19,15 +19,15 @@ class CourseList extends StatelessWidget {
               BoxShadow(
                   color: Colors.black87.withOpacity(0.3),
                   blurRadius: 28,
-                  offset: Offset(8, 16))
+                  offset: Offset(10, 15))
             ]),
         child: Padding(
           padding: EdgeInsets.all(16),
           child: Row(
             children: [
               Container(
-                width: size.width * 0.3,
-                height: size.height * 0.2,
+                width: size.width * 0.25,
+                height: size.height * 0.25,
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(16),
                   child: Image(
@@ -36,36 +36,41 @@ class CourseList extends StatelessWidget {
                   ),
                 ),
               ),
-              Container(
-                width: size.width * 0.5,
-                child: Padding(
-                  padding: EdgeInsets.only(left: 8, top: 8),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(course.titleProgram,
-                          style: GoogleFonts.roboto(
-                              fontSize: 14, fontWeight: FontWeight.bold),
-                          maxLines: 2),
-                      SizedBox(height: size.height * 0.01),
-                      Row(
-                        children: [
-                          Icon(Icons.assignment_outlined,
-                              color: Colors.black87),
-                          SizedBox(width: size.width * 0.01),
-                          Text(course.level)
-                        ],
-                      ),
-                      SizedBox(height: size.height * 0.01),
-                      Row(
-                        children: [
-                          Icon(Icons.access_time_outlined,
-                              color: Colors.black87),
-                          SizedBox(width: size.width * 0.01),
-                          Text(course.estimation)
-                        ],
-                      ),
-                    ],
+              Expanded(
+                child: Container(
+                  width: size.width * 0.2,
+                  child: Padding(
+                    padding: EdgeInsets.all(8),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.all(4),
+                          child: Text(
+                              course.titleProgram,
+                              style: GoogleFonts.roboto(fontSize: 14, fontWeight: FontWeight.bold),
+                              maxLines: 2),
+                        ),
+                        SizedBox(height: size.height * 0.01),
+                        Row(
+                          children: [
+                            Icon(Icons.assignment_outlined,
+                                color: Colors.black87),
+                            SizedBox(width: size.width * 0.01),
+                            Text(course.level)
+                          ],
+                        ),
+                        SizedBox(height: size.height * 0.01),
+                        Row(
+                          children: [
+                            Icon(Icons.access_time_outlined,
+                                color: Colors.black87),
+                            SizedBox(width: size.width * 0.01),
+                            Text(course.estimation)
+                          ],
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               )
@@ -83,7 +88,7 @@ class CourseList extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Padding(
-            padding: EdgeInsets.fromLTRB(16, 0, 16, 0),
+            padding: EdgeInsets.symmetric(horizontal: 20),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
